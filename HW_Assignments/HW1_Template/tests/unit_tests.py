@@ -19,15 +19,13 @@ data_dir = os.path.abspath("../Data/Baseball")
 
 
 def t_load():
-
     connect_info = {
         "directory": data_dir,
         "file_name": "People.csv"
     }
-
     csv_tbl = CSVDataTable("people", connect_info, None)
-
     print("Created table = " + str(csv_tbl))
+    csv_tbl.save()
 
 
 t_load()

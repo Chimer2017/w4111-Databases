@@ -82,6 +82,7 @@ class CSVDataTable(BaseDataTable):
         with open(full_name, "r") as txt_file:
             csv_d_rdr = csv.DictReader(txt_file)
             for r in csv_d_rdr:
+                print(r.__str__())
                 self._add_row(r)
 
         self._logger.debug("CSVDataTable._load: Loaded " + str(len(self._rows)) + " rows")
@@ -91,6 +92,25 @@ class CSVDataTable(BaseDataTable):
         Write the information back to a file.
         :return: None
         """
+        dir_info = self._data["connect_info"].get("directory")
+        file_n = "new_file_hahaa.txt"
+        full_name = os.path.join(dir_info, file_n)
+        hello = 'hello'
+
+
+        with open(full_name,'w') as f:
+            for rr in self._rows:
+                f.write(rr.__str__())
+        pass
+
+
+
+
+
+
+
+
+
 
     @staticmethod
     def matches_template(row, template):
@@ -168,6 +188,7 @@ class CSVDataTable(BaseDataTable):
         :param new_record: A dictionary representing a row to add to the set of records.
         :return: None
         """
+        self._add_row(new_record)
         pass
 
     def get_rows(self):
